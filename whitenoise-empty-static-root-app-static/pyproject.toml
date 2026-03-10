@@ -1,0 +1,8 @@
+[project]
+name = "whitenoise-with-static-root-app-static"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "django>=4.0",
+  "whitenoise>=6.0",
+]
