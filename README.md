@@ -41,6 +41,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** none (collectstatic skipped)
 - **Lambda bundle:** source static dirs included (not excluded — no static strategy configured)
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: / }` (catch-all to `index.func`, added by CLI defaultRoutes)
 
 ### 2. `standard-app-static`
 
@@ -48,6 +49,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** `static/app/style.css`
 - **Lambda bundle:** app static dirs and `STATIC_ROOT` excluded
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 3. `standard-staticfiles-dirs`
 
@@ -55,6 +57,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** `static/style.css`
 - **Lambda bundle:** `STATICFILES_DIRS` and `STATIC_ROOT` excluded
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 4. `manifest-app-static`
 
@@ -62,6 +65,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** original + hashed CSS, `staticfiles.json`
 - **Lambda bundle:** app static dirs and `STATIC_ROOT` excluded except `staticfiles/staticfiles.json` re-injected
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 5. `manifest-staticfiles-dirs`
 
@@ -69,6 +73,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** original + hashed CSS, `staticfiles.json`
 - **Lambda bundle:** `STATICFILES_DIRS` and `STATIC_ROOT` excluded except `staticfiles/staticfiles.json` re-injected
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 6. `whitenoise-with-static-root-app-static`
 
@@ -76,6 +81,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** `static/app/style.css`
 - **Lambda bundle:** app static dirs and `STATIC_ROOT` excluded
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 7. `whitenoise-with-static-root-staticfiles-dirs`
 
@@ -83,6 +89,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** `static/style.css`
 - **Lambda bundle:** `STATICFILES_DIRS` and `STATIC_ROOT` excluded
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 8. `whitenoise-empty-static-root-app-static`
 
@@ -90,6 +97,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** `static/app/style.css`
 - **Lambda bundle:** app static dirs excluded, no `STATIC_ROOT` to exclude
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 9. `whitenoise-empty-static-root-staticfiles-dirs`
 
@@ -97,6 +105,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** `static/style.css`
 - **Lambda bundle:** `STATICFILES_DIRS` excluded, no `STATIC_ROOT` to exclude
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 10. `whitenoise-manifest-with-static-root-app-static`
 
@@ -104,6 +113,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** original + hashed CSS, `staticfiles.json`
 - **Lambda bundle:** app static dirs and `STATIC_ROOT` excluded except `staticfiles/staticfiles.json` re-injected
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 11. `whitenoise-manifest-with-static-root-staticfiles-dirs`
 
@@ -111,6 +121,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** original + hashed CSS, `staticfiles.json`
 - **Lambda bundle:** `STATICFILES_DIRS` and `STATIC_ROOT` excluded except `staticfiles/staticfiles.json` re-injected
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: /app/wsgi }` (catch-all to detected entrypoint, returned by builder)
 
 ### 12. `django-storages`
 
@@ -118,6 +129,7 @@ No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
 
 - **CDN output:** none (files uploaded to S3 directly)
 - **Lambda bundle:** source static dirs and `STATIC_ROOT` excluded
+- **Routes:** `{ handle: filesystem }`, `{ src: /(.*), dest: / }` (catch-all to `index.func`, added by CLI defaultRoutes)
 
 #### S3 setup
 
