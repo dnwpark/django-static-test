@@ -3,3 +3,5 @@ staticfiles/
 __pycache__/
 *.pyc
 .vercel
+.env
+.env.*
