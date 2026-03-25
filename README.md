@@ -35,6 +35,8 @@ vercel deploy --prebuilt
 
 ## Test Cases
 
+CDN output files should have the same size and content as their source files. 
+
 ### 1. `no-static-strategy`
 
 No `STATIC_ROOT`, `WHITENOISE_USE_FINDERS=False`.
